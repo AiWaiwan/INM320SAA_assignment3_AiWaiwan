@@ -1,0 +1,311 @@
+// scss variables
+$primary-color: #787878;
+$color1: #111111;
+$color2: #999999;
+$font1: Quando;
+$font-stack: 'Josefin Sans', sans-serif;
+
+body {
+// scss variables change1
+    font-family: $font1;
+    font-size: 15px;
+// scss variables change2
+    color: $primary-color;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+p {
+    margin-bottom: 25px;
+    line-height: 1.6em;
+}
+a {
+    font-weight: 400;
+    text-decoration: none;
+    color: $color1;
+    transition: .20s;
+}
+// scss variables change3
+a:hover {
+    color: $color2;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+// scss variables change4
+    font-family: $font-stack;
+    font-weight: 400;
+    line-height: 1.3em;
+    word-wrap: break-word;
+// scss variables change5
+    color: $color1;
+}
+
+// Mixin1
+@mixin headsize($size) {
+    font-size: $size;
+}
+
+h1 {
+    @include headsize(37px);
+}
+h2 {
+    @include headsize(31px);
+}
+h3 {
+    @include headsize(26px);
+}
+h4 {
+    @include headsize(21px);
+}
+h5 {
+    @include headsize(18px);
+}
+h6 {
+    @include headsize(15px);
+}
+
+
+.container {
+    width: 94%;
+    margin: 0 auto;
+}
+
+
+/* header and main nav */
+header {
+// scss variables change6
+    font-family: $font-stack;
+}
+header nav ul {
+    display: none;
+}
+
+.top-logo {
+    width: 200px;
+    margin: 20px auto 40px;
+}
+
+
+
+/* posts */
+article {
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-part {
+    margin-bottom: 10px;
+}
+
+.post-title {
+    margin-top: 0;
+}
+.post-title a {
+    color: #324360;
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 900;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 1.3em;
+    transition: all .3s ease;
+}
+.post-title a:hover {
+    color: #35c4ce;
+}
+
+
+
+/* footer */
+
+// Mixin2
+@mixin forfooter {
+    padding: 30px 0;
+    text-align: center;
+    background: #eaf2ff;
+    color: #989898;
+}
+footer {
+    @include forfooter;
+}
+
+#footer a {
+    color: #989898;
+}
+#footer a:hover {
+// scss variables change7
+    color: $color1;
+}
+.footer-logo {
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    vertical-align: middle;
+}
+.footer-social-links {
+    padding: 20px 0;
+    line-height: 2em;
+}
+
+// nestings change1
+.footer-social-links {
+    a {
+        margin: 0 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    a span {
+        display: none;
+    }
+}
+
+#footer-copyright {
+    padding: 20px 0;
+    font-size: 12px;
+    color: #989898;
+}
+
+
+@media only screen and (min-width: 650px) {
+    .container {
+        width: 90%;
+    }
+    header nav {
+        max-width: 1170px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+    }
+
+// nestings change2
+    header nav {
+        ul {
+            display: flex;
+        }
+
+        li {
+            margin: 0 15px;
+            position: relative;
+            line-height: 24px;
+        }
+
+        a {
+            font-family: 'Josefin Sans', sans-serif;
+            color: #324360;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        a:hover {
+            color: #35c4ce;
+        }
+
+        li.menu-item-has-children > a::after {
+            margin-left: 7px;
+            font-family: 'FontAwesome';
+            font-size: 13px;
+            color: #324360;
+            content: '\f078';
+        }
+    }
+    .current-menu-item a {
+        border-bottom: 2px solid #324360;
+    }
+    /* sub nav */
+// nestings change3
+    header nav ul {
+        ul {
+            visibility: hidden;
+            opacity: 0;
+            display: block;
+            position: absolute;
+            z-index: 9999;
+            left: 0;
+            background: #f0f0f0;
+            transition: all 0.2s ease-out;
+        }
+
+        li:hover ul {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        ul li {
+            border-top: 1px solid #e9e9e9;
+            margin: 0;
+        }
+
+        ul a {
+            display: block;
+            color: #111111;
+            min-width: 175px;
+            margin: 0;
+            padding: 20px 10px;
+            line-height: 1.4em;
+            letter-spacing: 1px;
+            transition: .35s;
+        }
+
+        ul a:hover {
+            background: #ffffff;
+            color: #000; 
+        }
+    }
+
+
+    /* posts */
+    article {
+        display: flex;
+    }
+    .image-part {
+        flex: 1;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+// nestings change4
+    .image-part {
+        img {
+            transition: transform 3.5s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.5,1.5);
+        }
+    }
+    .content-part {
+        flex: 1;
+        padding-left: 50px;
+    }
+
+
+
+    /* footer */
+// nestings change5
+    .footer-social-links {
+        a {
+            margin: 0 28px;
+        }
+
+        i {
+            margin-right: 5px;
+        }
+
+        a span {
+            display: inline;
+            font-size: 11px;
+        }
+    }
+}
